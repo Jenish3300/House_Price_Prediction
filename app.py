@@ -23,29 +23,34 @@ def main():
     st.title('House Price Prediction Web App')
 
     # getting the input data from the user
-    CRIM = st.text_input('Per capita crime rate by town')
-    ZN = st.text_input('Proportion of residential land zoned for lots over 25,000 sq. ft.')
-    INDUS = st.text_input('Proportion of non-retail business acres per town')
-    CHAS = st.text_input('Charles River dummy variable (1 if tract bounds river; 0 otherwise)')
-    NOX = st.text_input('Nitric oxide concentration (parts per 10 million)')
-    RM = st.text_input('Average number of rooms per dwelling')
-    AGE = st.text_input('Proportion of owner-occupied units built prior to 1940')
-    DIS = st.text_input('Weighted distances to five Boston employment centers')
-    RAD = st.text_input('Index of accessibility to radial highways')
-    TAX = st.text_input('Full-value property tax rate per $10,000')
-    PTRATIO = st.text_input('Pupil-teacher ratio by town')
-    B = st.text_input('1000*(Bk - 0.63)^2, where Bk is proportion of Black residents')
-    LSTAT = st.text_input('Percentage of lower status population')
+    CRIM = st.number_input('Per capita crime rate by town', value=0.0)
+    ZN = st.number_input('Proportion of residential land zoned for lots over 25,000 sq. ft.', value=0.0)
+    INDUS = st.number_input('Proportion of non-retail business acres per town', value=0.0)
+    CHAS = st.number_input('Charles River dummy variable (1 if tract bounds river; 0 otherwise)', value=0)
+    NOX = st.number_input('Nitric oxide concentration (parts per 10 million)', value=0.0)
+    RM = st.number_input('Average number of rooms per dwelling', value=0.0)
+    AGE = st.number_input('Proportion of owner-occupied units built prior to 1940', value=0.0)
+    DIS = st.number_input('Weighted distances to five Boston employment centers', value=0.0)
+    RAD = st.number_input('Index of accessibility to radial highways', value=0)
+    TAX = st.number_input('Full-value property tax rate per $10,000', value=0.0)
+    PTRATIO = st.number_input('Pupil-teacher ratio by town', value=0.0)
+    B = st.number_input('1000*(Bk - 0.63)^2, where Bk is proportion of Black residents', value=0.0)
+    LSTAT = st.number_input('Percentage of lower status population', value=0.0)
 
     # code for Prediction
     price = ''
 
     # creating button for prediction
     if st.button('House Price Result'):
-        price = house_price_prediction([CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT])
-        st.sucess(price)
+        if "" in [CRIM, ZN, INDUS, RM, LSTAT]:
+            st.error("Please fill in all fields with numeric values.")
+        else:
+            # run prediction
+            price = house_price_prediction([CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT])
+            st.sucess(price)
 
 if __name__=='__main__':
 
     main()
+
 
