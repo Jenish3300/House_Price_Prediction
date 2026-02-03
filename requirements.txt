@@ -1,8 +1,8 @@
-fastapi
-uvicorn
-pydantic
-pickle5
-scikit-learn
 numpy
-flask
-gunicorn
+pickle-mixin
+streamlit
+streamlit-option-menu
+scikit-learn
+
+protobuf
+
