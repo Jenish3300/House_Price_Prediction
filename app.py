@@ -47,10 +47,11 @@ def main():
         else:
             # run prediction
             price = house_price_prediction([CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT])
-            st.sucess(price)
+            st.success(price)
 
 if __name__=='__main__':
 
     main()
+
 
 
